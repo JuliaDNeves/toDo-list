@@ -1,21 +1,18 @@
 /* Geral */
-
 *{
     padding: 0;
     margin: 0;
-    font-size: Helvetica;
+    font-family: Helvetica, Arial, sans-serif;
     color: #333;
     box-sizing: border-box;
 }
 
 body{
-    background-color: #5491ca;
+    background: linear-gradient(90deg, #040792, #6811af);
+    margin-top: 5rem;
 }
 
 button{
-    background-color: #FDFDFD;
-    color: #102f5e;
-    border: 2px solid #102f5e;
     padding: .3rem .6rem;
     cursor: pointer;
     display: flex;
@@ -24,17 +21,8 @@ button{
     transition: 0.4s;
 }
 
-button:hover{
-    background-color: #102f5e;
-    color: #fff;
-}
-
-button:hover > i {
-    color: #fff;
-}
-
 button i{
-    color: #102f5e;
+    color: #333;
     font-weight: bold;
     pointer-events: none;
 }
@@ -47,28 +35,26 @@ input, select{
     display: none;
 }
 
+.form-control input:focus {
+    outline: none;
+}
 
 /* TODO HEADER */
-
 .todo-container{
-    max-width: 450px;
+    max-width: 500px;
     margin: 3rem auto;
     background-color: #fdfdfd;
     padding: 1.5rem;
     border-radius: 15px;
 }
 .todo-container header{
-    text-align: center;
     padding: 0 1rem 1rem;
-    border-bottom: 1px solid #ccc;
-
 }
 
 /* TODO FORM */
-
 #todo-form, #edit-form{
+    position: relative;
     padding: 1rem;
-    border-bottom: 1px solid #ccc;
 }
 
 #todo-form p,
@@ -79,69 +65,49 @@ input, select{
 
 .form-control{
     display: flex;
+    position: relative;
 }
 
 .form-control input{
-    margin-right: 0.3rem;
+    flex: 1;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #e6e6e6;
+    border: none;
+    padding-left: 20px;
+    padding-right: 120px;
 }
 
-#cancel-edit-bnt{
+#addButton{
+    background-color: #ff0000;
+    color: #ffffff;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 40px;
+    position: absolute;
+    right: 0;
+}
+
+#addButton:hover{
+    background-color: #c20000;
+}
+
+#cancel-edit-btn{ 
     margin-top: 1rem;
 }
 
-/*  TODO TOOLBAR */
-
-#toolbar{
-    padding: 1rem;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-}
-
-#toolbar h4{
-    margin-bottom: .5rem;
-}
-
-#search{
-    border-right: 1px solid #ddd;
-    padding-right: 1rem;
-    margin-right: 1rem;
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-}
-
-#search form{
-    display: flex;
-}
-
-#search input{
-    width: 100%;
-    margin: .3rem;
-}
-
-#filter{
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-}
-
-#filter select{
-    flex: 1;
-}
-
 /* TODO LIST */
-
 .todo{
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 1rem;
-
-    border-bottom: 1px solid #ddd;
     transition: .3s;
 }
 
 .todo h3{
+    margin-left: 0.4rem;
     flex: 1;
     font-size: 0.9rem;
 }
@@ -150,12 +116,85 @@ input, select{
     margin-left: 0.4rem;
 }
 
-.done {
-    background-color: #395169;
+/* Quando concluído */
+.done .finish-todo{
+    background-color: #ff0000;
+    border: none;
+    cursor: pointer;
+}
+
+.done .finish-todo:hover{
+    background-color: #cc0000; 
 }
 
 .done h3{
-    color: #fff;
     text-decoration: line-through;
     font-style: italic;
+}
+
+/* Botões */
+
+.finish-todo{
+    background-color: #FDFDFD;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.finish-todo i{
+    color: #ffffff;
+}
+
+.finish-todo:hover{
+    background-color: #ccc;
+}
+
+.edit-todo, .remove-todo{
+    background-color: #FDFDFD;
+    width: 30px;
+    height: 30px;
+    color: #102f5e;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.edit-todo:hover, .remove-todo:hover{
+    background-color: #ccc;
+}
+
+/* CancelEdit Btn */
+#cancel-edit-btn{
+    background-color: #FDFDFD;
+    border-radius: 20px;
+    border: 1px solid #333;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#cancel-edit-btn:hover{
+    background-color: #e7e7e7;
+}
+
+/* Botão de editar */
+#edit-btn{
+    position: absolute;
+    right: 0;
+    height: 40px;
+    width: 100px;
+    border-radius: 40px;
+    background-color: #ff9532;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#edit-btn:hover{
+    background-color: #e07c1d;
 }

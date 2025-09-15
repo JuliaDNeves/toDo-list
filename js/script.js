@@ -15,14 +15,14 @@ const saveTodo = (text) =>{
     const todo = document.createElement("div")
     todo.classList.add("todo")
 
-    const todoTitle = document.createElement("h3")
-    todoTitle.innerText = text
-    todo.appendChild(todoTitle)
-
     const doneBtn = document.createElement("button")
     doneBtn.classList.add("finish-todo")
     doneBtn.innerHTML = '<i class="fa-solid fa-check"></i>'
     todo.appendChild(doneBtn)
+
+    const todoTitle = document.createElement("h3")
+    todoTitle.innerText = text
+    todo.appendChild(todoTitle)
 
     const editBtn = document.createElement("button")
     editBtn.classList.add("edit-todo")
