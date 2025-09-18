@@ -9,6 +9,7 @@ Com ela, você pode anotar o que precisa fazer, editar, remover ou marcar como c
 - **Editar tarefa**: é possível modificar o texto de uma tarefa existente.  
 - **Remover tarefa**: o usuário pode excluir atividades concluídas ou desnecessárias.  
 - **Marcar como concluída**: tarefas podem ser sinalizadas como finalizadas.
+- **Salvar localmente**: todas as tarefas são armazenadas no navegador usando **LocalStorage**, então permanecem mesmo após atualizar a página.  
   
 ## 🛠️ Tecnologias Utilizadas  
 
