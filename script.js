@@ -8,9 +8,8 @@ const cancelEditBtn = document.querySelector('#cancel-edit-btn');
 
 let oldInputValue;
 
-// funções
 
-const saveTodo = (text) =>{
+const addTodo = (text) => {
 
     const todo = document.createElement("div")
     todo.classList.add("todo")
@@ -46,37 +45,53 @@ const toggleForms = () => {
     todoList.classList.toggle("hide")
 }
 
-const updateTodo = (text) =>{
-
+const updateTodo = (text) => {
     const todos = document.querySelectorAll(".todo")
-
-    todos.forEach((todo) =>{
-
+    todos.forEach((todo) => {
         let todoTitle = todo.querySelector("h3")
-
         if(todoTitle.innerText === oldInputValue){
             todoTitle.innerText = text
         }
-
     })
-
 }
 
-// eventos
+function saveData(){
+    const todos = [];
+    document.querySelectorAll(".todo").forEach(todo => {
+        todos.push({
+            text: todo.querySelector("h3").innerText,
+            done: todo.classList.contains("done")
+        });
+    });
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+
+function loadData(){
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    todos.forEach(todo => {
+        addTodo(todo.text);
+        if(todo.done){
+            const lastTodo = document.querySelector(".todo:last-child");
+            lastTodo.classList.add("done");
+        }
+    });
+}
+
+
+
+document.addEventListener("DOMContentLoaded", loadData);
 
 todoForm.addEventListener("submit", (e) =>{
-
     e.preventDefault()
-
     const inputValue = todoInput.value
-
     if(inputValue){
-        saveTodo(inputValue)
+        addTodo(inputValue)
+        saveData(); // salva ao adicionar
     }
 });
 
 document.addEventListener("click", (e) =>{
-
     const targetEl = e.target
     const parentEl = targetEl.closest("div")
     let todoTitle;
@@ -87,15 +102,16 @@ document.addEventListener("click", (e) =>{
 
     if(targetEl.classList.contains("finish-todo")){
         parentEl.classList.toggle("done")
+        saveData(); // salva ao marcar/desmarcar
     }
 
     if(targetEl.classList.contains("remove-todo")){
         parentEl.remove()
+        saveData(); // salva ao remover
     }
 
     if(targetEl.classList.contains("edit-todo")){
         toggleForms();
-
         editInput.value = todoTitle;
         oldInputValue = todoTitle;
     }
@@ -103,20 +119,15 @@ document.addEventListener("click", (e) =>{
 
 cancelEditBtn.addEventListener("click", (e) => {
     e.preventDefault();
-
     toggleForms();
 });
 
-
 editForm.addEventListener("submit", (e) =>{
-
     e.preventDefault();
-
     const editInputValue = editInput.value
-
     if(editInputValue){
         updateTodo(editInputValue)
+        saveData(); // salva ao editar
     }
-
     toggleForms()
 })
