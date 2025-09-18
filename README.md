@@ -15,7 +15,7 @@ Com ela, você pode anotar o que precisa fazer, editar, remover ou marcar como c
 
 - **HTML5**
 - **CSS3**
-- **JavaScript (ES6)**
+- **JavaScript**
 
 ## ▶️ Como visualizar o projeto  
 
