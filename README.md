@@ -8,9 +8,8 @@ Com ela, você pode anotar o que precisa fazer, editar, remover ou marcar como c
 - **Adicionar tarefa**: o usuário pode inserir novas atividades na lista.  
 - **Editar tarefa**: é possível modificar o texto de uma tarefa existente.  
 - **Remover tarefa**: o usuário pode excluir atividades concluídas ou desnecessárias.  
-- **Marcar como concluída**: tarefas podem ser sinalizadas como finalizadas.  
-- **Layout responsivo**: adaptado para diferentes tamanhos de tela.  
-
+- **Marcar como concluída**: tarefas podem ser sinalizadas como finalizadas.
+  
 ## 🛠️ Tecnologias Utilizadas  
 
 - **HTML5**
